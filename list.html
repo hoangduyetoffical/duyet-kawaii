@@ -228,6 +228,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 -->
         <div class="w3-row-padding">
           <div class="w3-col m4">
+            <h3>Music</h3>
             <div class="timeline">
               <div class="progress"></div>
             </div>
@@ -235,39 +236,38 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
             <script>
               var playlist = [
                 'guy.mp3',
-                'Hikaru.mp3',
-                'lemon.mp3'
+                'lemon.mp3',
+                'Hikaru.mp3'
                 // Thêm các tên file nhạc khác vào đây
               ];
-
+              
               var audio = new Audio();
               var currentSong = 0;
               var progressBar = document.querySelector('.progress');
-    
-              function playMusic() {
-              audio.src = playlist[currentSong];
-              audio.play();
+              
+              function updateProgressBar() {
+                var progress = (audio.currentTime / audio.duration) * 100;
+                progressBar.style.width = progress + '%';
+              }
+              
+              function playNextSong() {
+                currentSong++;
+                if (currentSong >= playlist.length) {
+                  currentSong = 0;
+                }
+                audio.src = playlist[currentSong];
+                audio.play();
+              }
+              
               audio.addEventListener('timeupdate', updateProgressBar);
               audio.addEventListener('ended', playNextSong);
-              }
-    
-              function updateProgressBar() {
-              var progress = (audio.currentTime / audio.duration) * 100;
-              progressBar.style.width = progress + '%';
-              }
-
-              function playNextSong() {
-              currentSong++;
-                if (currentSong >= playlist.length) {
-              currentSong = 0;
-              }
-              audio.src = playlist[currentSong];
-              audio.play();
-              }
-    
-    // Phát nhạc tự động khi trang được tải
-    window.addEventListener('load', playMusic);
-  </script>
+              
+              // Tự động phát nhạc và tắt tự động phát khi người dùng tương tác với timeline
+              audio.autoplay = true;
+              progressBar.addEventListener('click', function() {
+                audio.autoplay = false;
+              });
+            </script>
 
 
 
