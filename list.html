@@ -235,9 +235,9 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
             
             <script>
               var playlist = [
-                'nhac1.mp3',
-                'nhac2.mp3',
-                'nhac3.mp3'
+                'lemon.mp3',
+                'guy.mp3',
+                'Hikaru.mp3'
                 // Thêm các tên file nhạc khác vào đây
               ];
               
@@ -262,6 +262,12 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
               audio.addEventListener('timeupdate', updateProgressBar);
               audio.addEventListener('ended', playNextSong);
               
+              // Phát nhạc tự động khi trang được tải
+              window.addEventListener('load', function() {
+              audio.src = playlist[currentSong];
+              audio.play();
+              });
+
               // Tắt tự động phát khi người dùng tương tác với timeline
               progressBar.addEventListener('click', function() {
                 audio.autoplay = false;
