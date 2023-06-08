@@ -216,52 +216,36 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
         <div class="w3-row-padding">
           <div class="w3-col m4">
             <h3>Music</h3>
-            <audio controls autoplay>
-              <source src="guy.mp3" type="audio/mp3">
-            </audio>
-              <div class="progress"></div>
-            </div>
-            
-            <script>
-              var playlist = [
-                'lemon.mp3',
-                'guy.mp3',
-                'Hikaru.mp3'
-                // Thêm các tên file nhạc khác vào đây
-              ];
-              
-              var audio = new Audio();
-              var currentSong = 0;
-              var progressBar = document.querySelector('.progress');
-              
-              function updateProgressBar() {
-                var progress = (audio.currentTime / audio.duration) * 100;
-                progressBar.style.width = progress + '%';
-              }
-              
-              function playNextSong() {
-                currentSong++;
-                if (currentSong >= playlist.length) {
-                  currentSong = 0;
-                }
-                audio.src = playlist[currentSong];
-                audio.play();
-              }
-              
-              audio.addEventListener('timeupdate', updateProgressBar);
-              audio.addEventListener('ended', playNextSong);
-              
-              // Phát nhạc tự động khi trang được tải
-              window.addEventListener('load', function() {
-              audio.src = playlist[currentSong];
-              audio.play();
-              });
-
-              // Tắt tự động phát khi người dùng tương tác với timeline
-              progressBar.addEventListener('click', function() {
-                audio.autoplay = false;
-              });
-            </script>
+  
+  <audio controls autoplay id="audioPlayer">
+    <source src="guy.mp3" type="audio/mp3">
+    <source src="lemon.mp3" type="audio/mp3">
+    <source src="Hikaru.mp3" type="audio/mp3">
+    <!-- Thêm các đường dẫn nhạc khác vào đây -->
+  </audio>
+  
+  <script>
+    var audioPlayer = document.getElementById('audioPlayer');
+    var sources = audioPlayer.getElementsByTagName('source');
+    var currentSong = 0;
+    
+    function playNextSong() {
+      currentSong++;
+      if (currentSong >= sources.length) {
+        currentSong = 0;
+      }
+      audioPlayer.src = sources[currentSong].src;
+      audioPlayer.play();
+    }
+    
+    audioPlayer.addEventListener('ended', playNextSong);
+    
+    // Phát nhạc tự động khi trang được tải
+    window.addEventListener('load', function() {
+      audioPlayer.src = sources[currentSong].src;
+      audioPlayer.play();
+    });
+  </script>
             
             
 
