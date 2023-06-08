@@ -228,15 +228,16 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 -->
         <div class="w3-row-padding">
           <div class="w3-col m4">
+            <h3>Music</h3>
             <div class="timeline">
               <div class="progress"></div>
             </div>
             
             <script>
               var playlist = [
-                'guy.mp3',
-                'lemon.mp3',
-                'Hikaru.mp3'
+                'nhac1.mp3',
+                'nhac2.mp3',
+                'nhac3.mp3'
                 // Thêm các tên file nhạc khác vào đây
               ];
               
@@ -261,12 +262,13 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
               audio.addEventListener('timeupdate', updateProgressBar);
               audio.addEventListener('ended', playNextSong);
               
-              // Tự động phát nhạc và tắt tự động phát khi người dùng tương tác với timeline
-              audio.autoplay = true;
+              // Tắt tự động phát khi người dùng tương tác với timeline
               progressBar.addEventListener('click', function() {
                 audio.autoplay = false;
               });
             </script>
+            
+            <audio src="" controls autoplay style="display: none;"></audio>
 
 
 
