@@ -10,6 +10,17 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="button">
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: 4CAF50;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      font-size: 16px;
+      cursor: pointer;
+</div>
 <style>
 body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 </style>
@@ -187,16 +198,19 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     <!-- Job -->
     
     <!-- Footer -->
-    <div class="w3-row-padding">
+    <!--<div class="w3-row-padding">
       <div class="w3-col m4">
         <h3>Music</h3>
         <audio controls autoplay>
           <source src="guy.mp3" type="audio/mp3">
         </audio>
-        <!-- <p><a href="facebook.com" target="_blank">Facebook</a></p> -->
+        <p><a href="facebook.com" target="_blank">Facebook</a></p> 
       </div>
-  
+    -->
    <!--
+      
+
+
 
     <div class="w3-third">
       <h3>POPULAR TAGS</h3>
@@ -209,6 +223,39 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
       </p>
     </div>
 -->
+        <div class="w3-row-padding">
+          <div class="w3-col m4">
+            <h3>Music</h3>
+            <button class="button" onclick="playMusic()">Phát nhạc</button>
+            <script>
+              var playlist = [
+                'guy.mp3',
+                'Hikaru.mp3',
+                'lemon.mp3'
+                // Thêm các tên file nhạc khác vào đây
+              ];
+              
+              var audio = new Audio();
+              var currentSong = 0;
+              
+              function playMusic() {
+                audio.src = playlist[currentSong];
+                audio.play();
+                audio.addEventListener('ended', playNextSong);
+              }
+              
+              function playNextSong() {
+                currentSong++;
+                if (currentSong >= playlist.length) {
+                  currentSong = 0;
+                }
+                audio.src = playlist[currentSong];
+                audio.play();
+              }
+            </script>
+
+
+
   </div>
   </footer>
   
