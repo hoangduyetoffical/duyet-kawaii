@@ -217,35 +217,51 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
           <div class="w3-col m4">
             <h3>Music</h3>
   
-  <audio controls autoplay id="audioPlayer">
-    <source src="guy.mp3" type="audio/mp3">
-    <source src="lemon.mp3" type="audio/mp3">
-    <source src="Hikaru.mp3" type="audio/mp3">
-    <!-- Thêm các đường dẫn nhạc khác vào đây -->
-  </audio>
-  
-  <script>
-    var audioPlayer = document.getElementById('audioPlayer');
-    var sources = audioPlayer.getElementsByTagName('source');
-    var currentSong = 0;
-    
-    function playNextSong() {
-      currentSong++;
-      if (currentSong >= sources.length) {
-        currentSong = 0;
-      }
-      audioPlayer.src = sources[currentSong].src;
-      audioPlayer.play();
-    }
-    
-    audioPlayer.addEventListener('ended', playNextSong);
-    
-    // Phát nhạc tự động khi trang được tải
-    window.addEventListener('load', function() {
-      audioPlayer.src = sources[currentSong].src;
-      audioPlayer.play();
-    });
-  </script>
+            <audio controls autoplay id="audioPlayer">
+              <source src="nhac1.mp3" type="audio/mp3">
+              <source src="nhac2.mp3" type="audio/mp3">
+              <source src="nhac3.mp3" type="audio/mp3">
+              <!-- Thêm các đường dẫn nhạc khác vào đây -->
+            </audio>
+          
+            <div>
+              <button onclick="playNextSong()">Bài hát kế tiếp</button>
+              <select onchange="changeSong()">
+                <option value="0">Bài hát 1</option>
+                <option value="1">Bài hát 2</option>
+                <option value="2">Bài hát 3</option>
+                <!-- Thêm các tùy chọn bài hát khác vào đây -->
+              </select>
+            </div>
+            
+            <script>
+              var audioPlayer = document.getElementById('audioPlayer');
+              var sources = audioPlayer.getElementsByTagName('source');
+              var currentSong = 0;
+              
+              function playNextSong() {
+                currentSong++;
+                if (currentSong >= sources.length) {
+                  currentSong = 0;
+                }
+                audioPlayer.src = sources[currentSong].src;
+                audioPlayer.play();
+              }
+              
+              function changeSong() {
+                currentSong = parseInt(event.target.value);
+                audioPlayer.src = sources[currentSong].src;
+                audioPlayer.play();
+              }
+              
+              audioPlayer.addEventListener('ended', playNextSong);
+              
+              // Phát nhạc tự động khi trang được tải
+              window.addEventListener('load', function() {
+                audioPlayer.src = sources[currentSong].src;
+                audioPlayer.play();
+              });
+            </script>
             
             
 
